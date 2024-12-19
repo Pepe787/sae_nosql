@@ -19,7 +19,7 @@ print(ocom)
 
 # 2 Pour chaque employé, le nombre de clients, le nombre de commandes et le montant total de celles-ci ;
 emp = pandas.read_sql_query( """
-    SELECT employeeNumber, lastName, COUNT(distinct c.customerNumber), COUNT(distinct o.orderNumber),SUM(od.priceEach) FROM Employees e 
+    SELECT employeeNumber, lastName, COUNT(distinct c.customerNumber), COUNT(distinct o.orderNumber),SUM(od.priceEach*quantityOrdered) FROM Employees e 
     left join Customers c
     on e.employeeNumber=c.salesRepEmployeeNumber
     left join Orders o
